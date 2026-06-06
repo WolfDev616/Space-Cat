@@ -6,16 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 50.931328
 
-[node name="Player" type="CharacterBody2D" unique_id=1543855684]
+[node name="Player" type="Area2D" unique_id=611381096]
 script = ExtResource("1_g2els")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1344134678]
 texture = ExtResource("1_3vyb7")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1251780212]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=43008011]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=43008011]
 shape = SubResource("CircleShape2D_g2els")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]

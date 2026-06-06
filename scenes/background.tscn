@@ -5,8 +5,11 @@
 [node name="background" type="Node2D" unique_id=570209618]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1253010922]
-offset_right = 2893.0
-offset_bottom = 4340.0
+offset_left = -251.99982
+offset_top = -854.99994
+offset_right = 2641.0002
+offset_bottom = 3485.0
+scale = Vector2(0.52723074, 0.52723074)
 texture = ExtResource("1_bkp1e")
 expand_mode = 5
 stretch_mode = 3
