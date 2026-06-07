@@ -1,15 +1,25 @@
 [gd_scene format=3 uid="uid://bmavcsqfu2br5"]
 
-[ext_resource type="Texture2D" uid="uid://brd263ct25s0o" path="res://images/ivana-cajina-asuyh-_ZX54-unsplash.jpg" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://brd263ct25s0o" path="res://assets/ivana-cajina-asuyh-_ZX54-unsplash.jpg" id="1_bkp1e"]
+[ext_resource type="Script" uid="uid://bjeyrqakauyyi" path="res://scripts/background.gd" id="1_y0upk"]
 
 [node name="background" type="Node2D" unique_id=570209618]
+script = ExtResource("1_y0upk")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1253010922]
-offset_left = -251.99982
-offset_top = -854.99994
-offset_right = 2641.0002
-offset_bottom = 3485.0
+[node name="Image" type="TextureRect" parent="." unique_id=1253010922]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.99997
+offset_top = 92.00001
+offset_right = 255.99997
+offset_bottom = 92.00001
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.52723074, 0.52723074)
+pivot_offset = Vector2(-539.9812, -190.71982)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("1_bkp1e")
 expand_mode = 5
 stretch_mode = 3

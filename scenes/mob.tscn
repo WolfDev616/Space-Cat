@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://c5g7uhs1nvp77"]
 
-[ext_resource type="Texture2D" uid="uid://cbsfuakpvragr" path="res://images/spaceRock2.png" id="1_4are2"]
+[ext_resource type="Texture2D" uid="uid://cbsfuakpvragr" path="res://assets/spaceRock2.png" id="1_4are2"]
 [ext_resource type="Script" uid="uid://dfjgwulaesexa" path="res://scripts/mob.gd" id="1_bsing"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rlwmu"]
 radius = 44.011364
 
 [node name="Mob" type="RigidBody2D" unique_id=1864420491]
+z_index = 3
 position = Vector2(278, 274)
-collision_layer = 0
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_bsing")
 metadata/_edit_group_ = true

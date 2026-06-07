@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dj3ytocv0fqbn"]
+
+[ext_resource type="PackedScene" uid="uid://c5g7uhs1nvp77" path="res://scenes/mob.tscn" id="1_3v1gu"]
+[ext_resource type="Texture2D" uid="uid://ddijhjkv2yhhv" path="res://assets/spaceRock3.png" id="2_88j6c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_88j6c"]
+radius = 8.952515
+height = 36.933624
+
+[node name="Mob" unique_id=1864420491 instance=ExtResource("1_3v1gu")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=554872560]
+scale = Vector2(0.12527558, 0.12527558)
+texture = ExtResource("2_88j6c")
+region_enabled = true
+region_rect = Rect2(12, 0, 724, 794)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=347720177]
+position = Vector2(0.9999999, 3)
+rotation = -0.7142581
+scale = Vector2(2.689897, 2.689897)
+shape = SubResource("CapsuleShape2D_88j6c")

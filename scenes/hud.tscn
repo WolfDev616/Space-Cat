@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://wxitxuhwli1j"]
 
-[ext_resource type="FontFile" uid="uid://c3gjgl8c5peif" path="res://images/OldeEnglish.ttf" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://c3gjgl8c5peif" path="res://assets/OldeEnglish.ttf" id="1_ahhtf"]
 [ext_resource type="Script" uid="uid://b6al6i7i7h1i4" path="res://scripts/hud.gd" id="1_oo0fn"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_oo0fn"]
+action = &"start_game"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_5ysmq"]
+events = [SubResource("InputEventAction_oo0fn")]
 
 [node name="HUD" type="CanvasLayer" unique_id=2065861731]
 script = ExtResource("1_oo0fn")
@@ -17,7 +24,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 90
-text = "3"
+text = "0"
 
 [node name="Message" type="Label" parent="." unique_id=1952619752]
 anchors_preset = 8
@@ -35,6 +42,8 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 90
 text = "Dodge the rocks!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="." unique_id=1297062275]
 anchors_preset = 7
@@ -51,6 +60,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 90
+shortcut = SubResource("Shortcut_5ysmq")
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="." unique_id=90379419]

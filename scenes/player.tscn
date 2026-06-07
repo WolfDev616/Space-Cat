@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://li0c03bclwvy"]
 
 [ext_resource type="Script" uid="uid://ci0mj7tavs5d5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://d1dbvct2ib06q" path="res://images/cat1.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://d1dbvct2ib06q" path="res://assets/cat1.png" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 
 [node name="Player" type="Area2D" unique_id=611381096]
+position = Vector2(542, 391)
+gravity_space_override = 3
+gravity_point = true
+gravity = 80.0
 script = ExtResource("1_g2els")
 metadata/_edit_group_ = true
 

@@ -3,36 +3,51 @@
 [ext_resource type="PackedScene" uid="uid://li0c03bclwvy" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dgsovrgxkwrxu" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c5g7uhs1nvp77" path="res://scenes/mob.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dj3ytocv0fqbn" path="res://scenes/mob2.tscn" id="3_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bmavcsqfu2br5" path="res://scenes/background.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bpsi44khkqnkw" path="res://scenes/spaceShip.tscn" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://wxitxuhwli1j" path="res://scenes/hud.tscn" id="5_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://bdesihgkdokyl" path="res://assets/Past, Present, Future.ogg" id="6_tefeu"]
 
 [sub_resource type="Curve2D" id="Curve2D_jyhfs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1160, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1160, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 640, 0, 0, 0, 0, 0, 0)
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_tipki"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, -8, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 640)
+}
+point_count = 4
+
 [node name="Main" type="Node" unique_id=1650526996]
 script = ExtResource("1_sugp2")
-mob_scene = ExtResource("2_jyhfs")
+mob_scene = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_o6xl0")])
+decoration_scene = Array[PackedScene]([ExtResource("4_tipki")])
 
 [node name="background" parent="." unique_id=570209618 instance=ExtResource("4_jyhfs")]
-position = Vector2(56, 48)
+position = Vector2(584, 336)
 rotation = 0.015383402
 
 [node name="Player" parent="." unique_id=1543855684 instance=ExtResource("1_o5qli")]
+z_index = 2
+position = Vector2(576, 432)
 
 [node name="MobTimer" type="Timer" parent="." unique_id=1641009379]
-wait_time = 0.5
+wait_time = 0.9
 
 [node name="ScoreTimer" type="Timer" parent="." unique_id=824925450]
+
+[node name="DecorationTimer" type="Timer" parent="." unique_id=1578123487]
+wait_time = 2.0
 
 [node name="StartTimer" type="Timer" parent="." unique_id=332888639]
 wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="." unique_id=212879197]
-position = Vector2(240, 450)
+position = Vector2(576, 432)
 
 [node name="MobPath" type="Path2D" parent="." unique_id=1700923403]
 curve = SubResource("Curve2D_jyhfs")
@@ -41,8 +56,20 @@ curve = SubResource("Curve2D_jyhfs")
 
 [node name="HUD" parent="." unique_id=2065861731 instance=ExtResource("5_tbgi4")]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=925461125]
+stream = ExtResource("6_tefeu")
+autoplay = true
+parameters/looping = true
+
+[node name="DecorationPath" type="Path2D" parent="." unique_id=187036848]
+curve = SubResource("Curve2D_tipki")
+
+[node name="DecorationSpawnLocation" type="PathFollow2D" parent="DecorationPath" unique_id=1684458927]
+rotation = -0.0069443327
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="DecorationTimer" to="." method="_on_decoration_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bpsi44khkqnkw"]
+
+[ext_resource type="PackedScene" uid="uid://b5bcjxxsdpu1d" path="res://scenes/decoration.tscn" id="1_my8b4"]
+
+[node name="Decoration" unique_id=615530742 instance=ExtResource("1_my8b4")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=600850274]
+z_index = 1
+position = Vector2(0, 0)
+region_enabled = false

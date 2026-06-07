@@ -1,6 +1,8 @@
 extends Node
 
-@export var mob_scene: PackedScene
+@export var mob_scene: Array[PackedScene]
+@export var decoration_scene: Array[PackedScene]
+
 var score
 
 
@@ -27,11 +29,12 @@ func _on_score_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
+	$DecorationTimer.start()
 
 func _on_mob_timer_timeout() -> void:
 	
 	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
+	var mob = mob_scene.pick_random().instantiate()
 
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $MobPath/MobSpawnLocation
@@ -41,16 +44,31 @@ func _on_mob_timer_timeout() -> void:
 	mob.position = mob_spawn_location.position
 
 	# Set the mob's direction perpendicular to the path direction.
-	var direction = mob_spawn_location.rotation + PI / 2
+	var direction = mob_spawn_location.rotation + (PI / 2)
 
 	# Add some randomness to the direction.
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(150.0, 400.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 	
+
+
+func _on_decoration_timer_timeout() -> void:
+	var decoration = decoration_scene.pick_random().instantiate()
+	var decoration_spawn_location = $DecorationPath/DecorationSpawnLocation
+	decoration_spawn_location.progress_ratio = randf()
+	decoration.position = decoration_spawn_location.position
+	var decoration_direction = decoration_spawn_location.rotation + (PI / 2)
+	decoration_direction += randf_range(-PI / 4, PI / 4)
+	decoration.rotation = decoration_direction
+	
+	var velocity = Vector2(randf_range(150.0, 400.0), 0.0)
+	decoration.linear_velocity = velocity.rotated(decoration_direction)
+	add_child(decoration)
+	print("Decoration added")
