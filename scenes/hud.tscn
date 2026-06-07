@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://wxitxuhwli1j"]
+
+[ext_resource type="FontFile" uid="uid://c3gjgl8c5peif" path="res://images/OldeEnglish.ttf" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://b6al6i7i7h1i4" path="res://scripts/hud.gd" id="1_oo0fn"]
+
+[node name="HUD" type="CanvasLayer" unique_id=2065861731]
+script = ExtResource("1_oo0fn")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1594033290]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 83.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 90
+text = "3"
+
+[node name="Message" type="Label" parent="." unique_id=1952619752]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.5
+offset_top = -41.5
+offset_right = 252.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 90
+text = "Dodge the rocks!"
+
+[node name="StartButton" type="Button" parent="." unique_id=1297062275]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 90
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=90379419]
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
